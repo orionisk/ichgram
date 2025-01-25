@@ -1,0 +1,65 @@
+services:
+  api:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - BASE_PATH=${BASE_PATH}
+      - ENABLE_AUTH=${ENABLE_AUTH}
+      - UPLOADTHING_TOKEN=${UPLOADTHING_TOKEN}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - EMAIL_FROM=${EMAIL_FROM}
+      - CLIENT_URL=${CLIENT_URL}
+      - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      - mongo
+      - mongo-init-replica
+    restart: unless-stopped
+    networks:
+      - app_network
+
+  mongo:
+    image: mongo:latest
+    command: ["mongod", "--replSet", "rs0", "--keyFile", "/etc/mongo-keyfile"]
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_INITDB_DATABASE=ichgram
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+      - type: bind
+        source: ${MONGO_KEYFILE_PATH}
+        target: /etc/mongo-keyfile
+        read_only: true
+    user: mongodb
+    restart: unless-stopped
+    expose:
+      - 27017
+    networks:
+      - app_network
+
+  mongo-init-replica:
+    image: mongo:latest
+    depends_on:
+      - mongo
+    command: >
+      bash -c "sleep 15
+      && mongosh --host mongo:27017 -u ${MONGO_USER} -p ${MONGO_PASSWORD} --authenticationDatabase admin
+      --eval 'rs.initiate({_id: \"rs0\", members: [{_id: 0, host: \"mongo:27017\"}]})'"
+    networks:
+      - app_network
+    restart: no
+
+networks:
+  app_network:
+
+volumes:
+  mongodb_data:
+  mongodb_config:

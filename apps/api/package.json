@@ -1,0 +1,49 @@
+{
+  "name": "@ichgram/api",
+  "type": "module",
+  "version": "1.0.0",
+  "exports": {
+    "./schemas": "./src/schemas/index.ts",
+    "./schemas/common": "./src/schemas/common.ts",
+    "./routes": "./src/modules/registerRoutes.ts"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "tsx watch --env-file .env src/index.ts",
+    "build": "tsc && tsc-alias",
+    "prisma:generate": "pnpx prisma generate",
+    "prisma:push": "prisma db push",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "@hono/node-ws": "^1.0.5",
+    "@hono/zod-openapi": "^0.18.3",
+    "@prisma/client": "6.2.1",
+    "@scalar/hono-api-reference": "^0.5.165",
+    "bcrypt": "^5.1.1",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.7",
+    "dotenv-expand": "^12.0.1",
+    "hono": "^4.6.16",
+    "hono-pino": "^0.7.0",
+    "hono-rate-limiter": "^0.4.2",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "resend": "^4.1.1",
+    "stoker": "^1.4.2",
+    "uploadthing": "^7.4.4",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.14.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^22.10.6",
+    "eslint": "^9.18.0",
+    "prisma": "^6.2.1",
+    "tsc-alias": "^1.8.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

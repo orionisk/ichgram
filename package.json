@@ -1,0 +1,14 @@
+{
+  "name": "final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm -r --parallel --aggregate-output dev",
+    "client": "pnpm -F client",
+    "api": "pnpm -F api"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,13 @@
+node_modules
+dist
+
+.env
+.env.prod
+.env.production
+
+.DS_Store
+.directory
+Thumbs.db
+
+.vscode
+mongo-keyfile

@@ -1,0 +1,21 @@
+{
+  "name": "@ichgram/api-client",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "tsc --watch > /dev/null",
+    "build": "tsc",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ichgram/api": "workspace:^",
+    "@types/node": "^22.10.6",
+    "hono": "^4.6.16"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "typescript": "~5.7.3"
+  }
+}

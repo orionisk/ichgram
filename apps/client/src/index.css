@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --sidebar-width: 150px;
+  }
+  @screen lg {
+    :root {
+      --sidebar-width: 244px;
+    }
+  }
+}
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  color: theme('colors.black');
+}
+
+html,
+body {
+  height: 100%;
+}
+
+emoji-picker {
+  width: 300px;
+  height: 300px;
+}

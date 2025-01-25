@@ -1,0 +1,5 @@
+export { default as auth } from './auth/auth.index'
+export { default as chat } from './chat/chat.index'
+export { default as notification } from './notification/notification.index'
+export { default as post } from './post/post.index'
+export { default as user } from './user/user.index'
