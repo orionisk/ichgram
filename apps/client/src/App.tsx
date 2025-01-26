@@ -16,7 +16,7 @@ export function App() {
   useRouteQueryInvalidation()
 
   if (isLoading)
-    return <div className="flex h-screen w-screen items-center justify-center"><Loader2 /></div>
+    return <div className="flex h-screen w-screen items-center justify-center"><Loader2 className="animate-spin" /></div>
 
   return (
     <Switch>
