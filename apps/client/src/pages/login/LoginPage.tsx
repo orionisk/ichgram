@@ -1,4 +1,3 @@
-import loginBg from '@/assets/login-bg.png'
 import logo from '@/assets/logo.png'
 import { Link } from 'wouter'
 import { LoginForm } from './LoginForm'
@@ -6,7 +5,6 @@ import { LoginForm } from './LoginForm'
 export function LoginPage() {
   return (
     <div className="container relative flex min-h-screen items-center justify-center gap-8 max-lg:flex-col max-lg:py-10">
-      <img src={loginBg} alt="login-bg" className="mt-10 max-lg:order-1 lg:mt-20" />
       <div className="grid gap-[10px]">
         <div className="w-full min-w-[350px] max-w-md border border-[#DBDBDB] px-6 py-4 lg:px-10 lg:py-8 lg:pb-4">
           <div className="text-center">
