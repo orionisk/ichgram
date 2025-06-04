@@ -13,7 +13,13 @@
   "license": "ISC",
   "pnpm": {
     "onlyBuiltDependencies": [
-      "bcrypt"
+      "@parcel/watcher",
+      "@prisma/client",
+      "@prisma/engines",
+      "@swc/core",
+      "bcrypt",
+      "esbuild",
+      "prisma"
     ]
   }
 }

@@ -21,8 +21,6 @@ services:
       - mongo
       - mongo-init-replica
     restart: unless-stopped
-    networks:
-      - app_network
 
   mongo:
     image: mongo:latest
@@ -42,9 +40,6 @@ services:
     restart: unless-stopped
     expose:
       - 27017
-    networks:
-      - app_network
-
   mongo-init-replica:
     image: mongo:latest
     depends_on:
@@ -53,12 +48,7 @@ services:
       bash -c "sleep 15
       && mongosh --host mongo:27017 -u ${MONGO_USER} -p ${MONGO_PASSWORD} --authenticationDatabase admin
       --eval 'rs.initiate({_id: \"rs0\", members: [{_id: 0, host: \"mongo:27017\"}]})'"
-    networks:
-      - app_network
     restart: no
-
-networks:
-  app_network:
 
 volumes:
   mongodb_data:
